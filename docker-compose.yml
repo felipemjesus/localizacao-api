@@ -1,7 +1,7 @@
 version: "3.7"
 services:
-  localizacao-api:
-    container_name: localizacao-api
+  localizacao_api:
+    container_name: localizacao_api
     build:
       context: '.'
       args:
@@ -14,8 +14,8 @@ services:
       - APACHE_RUN_USER=#${UID}
       - APACHE_RUN_GROUP=#${UID}
 
-  localizacao-db:
-    container_name: localizacao-db
+  localizacao_db:
+    container_name: localizacao_db
     image: mysql
     volumes:
       - mysql_storage:/var/lib/mysql
@@ -27,10 +27,10 @@ services:
       MYSQL_USER: localizacao
       MYSQL_PASSWORD: localizacao
 
-  localizacao-redis:
-    container_name: localizacao-redis
+  localizacao_redis:
+    container_name: localizacao_redis
     image: redis:6-alpine
-    command: redis-server --requirepass adressen
+    command: redis-server --requirepass localizacao
 
   composer:
     image: composer
